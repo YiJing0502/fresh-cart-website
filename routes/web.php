@@ -18,7 +18,16 @@ use App\Http\Controllers\Controller;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/cartAdd', [CartController::class, 'cartAdd']);
-Route::get('/cart-edit', [CartController::class, ('cartEdit')]);
-Route::get('/cart-product-list', [CartController::class, ('cartProductList')]);
+Route::prefix('/cart')->group(function () {
+
+    Route::get('/add', [CartController::class, 'create'])->name('cartAdd');
+    Route::post('/store', [CartController::class, ('store')])->name('cartStore');
+
+    Route::get('/edit/{id}', [CartController::class, 'edit'])->name('cartEdit');
+    Route::post('/update/{id}', [CartController::class, 'update'])->name('cartUpdate');
+    // 刪除
+    Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cartDestroy');
+
+    Route::get('/product-list', [CartController::class, 'index'])->name('cartProductList');
+});
 
