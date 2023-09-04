@@ -151,17 +151,4 @@ class CartController extends Controller
         $product->delete();
         return redirect(route('cartProductList'));
     }
-    // public function cartAdd()
-    // {
-    //     return view('freshCart.cartAdd');
-    // }
-    // public function cartEdit()
-    // {
-    //     return view('freshCart.cartEdit');
-    // }
-    // public function cartProductList()
-    // {
-    //     return view('freshCart.cartProductList');
-    // }
-
 }

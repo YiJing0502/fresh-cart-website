@@ -22,12 +22,9 @@ Route::prefix('/cart')->group(function () {
 
     Route::get('/add', [CartController::class, 'create'])->name('cartAdd');
     Route::post('/store', [CartController::class, ('store')])->name('cartStore');
-
+    Route::get('/product-list', [CartController::class, 'index'])->name('cartProductList');
     Route::get('/edit/{id}', [CartController::class, 'edit'])->name('cartEdit');
     Route::post('/update/{id}', [CartController::class, 'update'])->name('cartUpdate');
     // 刪除
     Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cartDestroy');
-
-    Route::get('/product-list', [CartController::class, 'index'])->name('cartProductList');
 });
-
