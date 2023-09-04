@@ -961,7 +961,7 @@
                             <div class="col-1 d-flex justify-content-center align-items-center"><input type="checkbox"
                                     class="input-size input-1"></input></div>
                             <div class="col-1 d-flex justify-content-start align-items-center">Image</div>
-                            <div class="col-2 d-flex justify-content-start align-items-center">OrderName</div>
+                            <div class="col-2 d-flex justify-content-start align-items-center">ProductName</div>
                             <div class="col-2 d-flex justify-content-start align-items-center">Description</div>
                             <div class="col-2 d-flex justify-content-start align-items-center">Creation Date</div>
                             <div class="col-1 d-flex justify-content-center align-items-center">Status</div>
