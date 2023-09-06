@@ -10,5 +10,5 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $fillable = ['crated_at','updated_at','name', 'img_path', 'price','status','descr'];
+    protected $fillable = ['created_at', 'updated_at','name', 'img_path', 'price','status','descr'];
 }

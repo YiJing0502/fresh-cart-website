@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ReplyToMessage;
 
-class ProductController extends Controller
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //產品列表
+        //
+
     }
 
     /**
@@ -19,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //新增資料
+        //
     }
 
     /**
@@ -27,7 +29,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //新產品儲存功能
+        //
+        // dd($request->all());
+        // ReplyToMessage::create([
+        //     'replay_message' => $request->reply,
+        // ]);
+        // return redirect(route('messageIndex'));
     }
 
     /**
@@ -43,7 +50,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //產品編輯頁
+        //
     }
 
     /**
@@ -51,7 +58,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //資料更新功能
+        //
     }
 
     /**
@@ -59,6 +66,6 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //刪除資料功能
+        //
     }
 }

@@ -20,14 +20,28 @@ class CartController extends Controller
         /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productItem = Product::all();
+        // dd($request->all());
+        $search = Product::query();
+        $keyword = $request->keyword ?? '';
+        // dd($keyword);
+        if ($request->filled('keyword')) {
+            // dd($keyword);
+            $search->where('name', 'like', '%'.$keyword.'%')->orwhere('descr', 'like', "%{$keyword}%");
+        }
+
+        $search = $search->paginate(5);
+        // $search->withPath('/cart/product-list?keyword=' . $keyword);
+        $search->appends(compact('keyword'));
+        // dd($search);
+
+        // $productItem = Product::all();
 
         //建立變數用於跟model要資料(m會找DB，將資料過率)取出來
         //產品列表
         return view('freshCart.cartProductList', compact
-        ('productItem'));
+        ('search'));
         // compact() = [key => value, key1 => value1, key2 => value2,...]
     }
 

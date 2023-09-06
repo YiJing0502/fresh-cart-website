@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('photo/cart-shopping.ico') }}" rel="shortcut icon" />
+    <link href="{{asset('photo/cart-shopping.ico')}}" rel="shortcut icon"/>
     <title>product-control</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -888,8 +888,7 @@
                 <!-- 導航欄右側  -->
                 <div class="nav-right col-6 h-75 p-0  d-flex justify-content-end align-items-center ">
                     <div class="alarm "><i class="fa-regular fa-bell fw-light"></i></div>
-                    <div class="login ms-4 position-relative"><img class="login"
-                            src="{{ asset('photo/login.jpg') }}">
+                    <div class="login ms-4 position-relative"><img class="login" src="{{asset('photo/login.jpg')}}">
                         <div class="login-block position-absolute appear">
                             <div class=" p-3 border-bottom">
                                 FreshCart Admin<br><span class="text-black-50"> admindemo@email.com</span>
@@ -908,140 +907,15 @@
 
             <!-- 右邊主欄 -->
             <div class="right row w-100  m-0 px-0 pt-3 justify-content-center align-content-start">
+                @yield('main')
 
 
-                <!-- 主欄最上面 -->
-                <div class="two-up row my-5 m-0 p-0 ">
-                    <div class="col-12 offset-md-1 col-md-5   ">
-                        <div class="row">
-                            <div class="col-12">
-                                <h2>Product list</h2>
-                            </div>
-                            <div class="col-3"><span>Dashboard</span></div>
-                            <div class="col-6"><span class="text-black-50">Categories</span></div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- 主欄第二排 -->
-
-                <!-- 購物清單 -->
-                <div class="list-big">
-                    <div class="two-down row mb-2 m-0 py-5 px-4">
-                        <div class="col-12 col-md-6  align-items-center d-flex">
-                            <form action="{{ route('cartProductList') }}" method="GET" class="d-flex w-75"
-                                role="search">
-                                <input name="keyword" class="form-control  form-control-2 text-black-50"
-                                    type="text" placeholder="搜尋名稱" aria-label="Search">
-                                <a href="">
-                                    <button type="submit"
-                                        class="btn ms-md-2 btn-success  btn-success-self-2">搜尋</button>
-                                </a>
-                            </form>
-                        </div>
-                        <a href="{{ route('cartAdd') }}">
-                            <button type="button" class="btn ms-md-2 btn-success  btn-success-self-2">Add New
-                                Category</button>
-                        </a>
-                        <div class="col-12 offset-md-4 col-md-2 mt-2 mt-md-0">
-                            <div class="dropdown ">
-                                <a class="btn btn-secondary w-100  py-1 dropdown-self dropdown-toggle text-black "
-                                    href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Status
-                                </a>
-
-                                <ul class="dropdown-menu rounded-4 dropdown-menu-self py-0 w-100"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item rounded-top-4 py-0 " href="#">Status</a></li>
-                                    <li><a class="dropdown-item py-0" href="#">Published</a></li>
-                                    <li><a class="dropdown-item rounded-bottom-4 py-0" href="#">Unpublished</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list  mb-self">
-                        <!-- 第一行 -->
-                        <div class="row w-100  m-0 text-secondary fs-14-self py-2 bg-line">
-                            <div class="col-1 d-flex justify-content-center align-items-center"><input type="checkbox"
-                                    class="input-size input-1"></input></div>
-                            <div class="col-1 d-flex justify-content-start align-items-center">Image</div>
-                            <div class="col-2 d-flex justify-content-start align-items-center">ProductName</div>
-                            <div class="col-2 d-flex justify-content-start align-items-center">Description</div>
-                            <div class="col-2 d-flex justify-content-start align-items-center">Creation Date</div>
-                            <div class="col-1 d-flex justify-content-center align-items-center">Status</div>
-                            <div class="col-1 d-flex justify-content-center align-items-center">Amount</div>
-                            <div class="col-2 d-flex justify-content-center align-items-center">Function</div>
-
-                        </div>
-                        <!-- 第二行 -->
-                        @foreach ($search as $item)
-                            <div class="row w-100 m-0 text-secondary fs-14-self py-2">
-                                <div class="col-1 d-flex justify-content-center align-items-center"><input
-                                        type="checkbox" class="input-size"></input></div>
-                                <div class="col-1 d-flex justify-content-start align-items-center"><img
-                                        src="{{ asset($item->img_path) }}" class="img-size"></div>
-                                <div class="col-2 d-flex justify-content-start align-items-center">{{ $item->name }}
-                                </div>
-                                <div class="col-2 d-flex justify-content-start align-items-center">{{ $item->descr }}
-                                </div>
-                                <div class="col-2 d-flex justify-content-start align-items-center">
-                                    {{ $item->created_at->format('Y-m-d') }}
-                                </div>
-                                <div class="col-1 d-flex justify-content-center align-items-center">
-                                    @if ($item->status == 1)
-                                        <span class="px-1 bg-green rounded">已上架</span>
-                                    @else
-                                        <span class="px-1 rounded">未上架</span>
-                                    @endif
-                                </div>
-                                <div class="col-1 d-flex justify-content-center align-items-center">
-                                    ${{ $item->price }}</div>
-                                <div class="col-2 d-flex justify-content-center align-items-center flex-wrap">
-                                    <a href="{{ route('cartEdit', ['id' => $item->id]) }}">
-                                        <button type="button"
-                                            class="btn mb-2 btn-success  btn-success-self">Edit</button>
-                                    </a>
-                                    <form action="{{ route('cartDestroy', ['id' => $item->id]) }}" method="post">
-                                        @csrf
-                                        <button type="submit"
-                                            class="btn  btn-success  btn-success-self">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-                {{-- 頁數 --}}
-                <div class="row no-hover py-4 px-3 align-items-center">
-                    <div class="col-6 col-md-6 fs-14-self text-secondary">Showing 1 to 8 of 12 entries</div>
-                    <div class="col-6 offset-md-2 col-md-4">
-                        <div aria-label="Page navigation example">
-
-                            {{ $search->links() }}
-                            {{-- <ul class="pagination  px-0 m-0 ">
-                                <li class="page-item "><a class="page-link py-2 rounded-2 text-secondary"
-                                        href="#">Previous</a></li>
-                                <li class="page-item "><a class="page-link py-2 ms-1 rounded-2 text-secondary "
-                                        href="#">1</a></li>
-                                <li class="page-item"><a class="page-link py-2 ms-1 rounded-2 text-secondary"
-                                        href="#">2</a></li>
-                                <li class="page-item"><a class="page-link py-2 ms-1 rounded-2 text-secondary"
-                                        href="#">3</a></li>
-                                <li class="page-item"><a class="page-link py-2 ms-1 rounded-2 text-secondary"
-                                        href="#">Next</a></li>
-                            </ul> --}}
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
         </div>
 
-
+@yield('js')
 
         <script>
             // 縮小時左邊侧欄出現
@@ -1060,7 +934,6 @@
                     appear[1].classList.toggle('d-block');
                 })
             }
-
             // 購物清單上點選第一行的checkbox後面的都會被勾選，或取消勾選
             {
                 let inputAll = document.querySelector('.input-1');
@@ -1086,7 +959,7 @@
 
 
 
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
         </script>
