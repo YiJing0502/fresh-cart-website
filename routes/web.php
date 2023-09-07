@@ -57,9 +57,14 @@ Route::prefix('/message')->group(function() {
     Route::post('/store', [MessageController::class, 'store'])->name('messageStore');
 
     Route::get('/edit/{id}', [MessageController::class, 'edit'])->name('messageEdit');
+
+    Route::put('/replayUpdate/{id}', [MessageController::class, 'replayUpdate'])->name('replayUpdate');
+
     Route::put('/update/{id}', [MessageController::class, 'update'])->name('messageUpdate');
     // 刪除
     Route::delete('/destroy/{id}', [MessageController::class, 'destroy'])->name('messageDestroy');
+
+    Route::delete('/reply/destroy/{id}', [MessageController::class, 'replayDestroy'])->name('replyDestroy');
 });
 
 Route::prefix('/reply')->group(function () {
@@ -71,5 +76,5 @@ Route::prefix('/reply')->group(function () {
     Route::get('/edit/{id}', [ReplyController::class, 'edit'])->name('replyEdit');
     Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
     // 刪除
-    Route::delete('/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');
+    // Route::delete('/reply/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');
 });

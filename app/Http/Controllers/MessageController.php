@@ -78,6 +78,23 @@ class MessageController extends Controller
         //
         // dd($id);
     }
+    public function replayUpdate(Request $request, string $id)
+    {
+        //
+        // dd($request->all());
+        // $messageId = $request->input('message_id');
+        // ReplyToMessage::update([
+        //     'replay_message' => $request->reply,
+        //     'message_id' => $messageId,
+        // ]);
+        $reply = ReplyToMessage::find($id);
+        // dd($reply);
+        $reply->update([
+            'replay_message' => $request->reply ?? '',
+        ]);
+
+        return redirect(route('messageIndex'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -100,7 +117,24 @@ class MessageController extends Controller
     {
         //
         $message = Message::find($id);
+        // dd($message->replyToMessage);
+        foreach ($message->replyToMessage as $reply) {
+            $reply->delete();
+        }
         $message->delete();
         return redirect(route('messageIndex'));
+    }
+
+    public function replayDestroy($id)
+    {
+        // dd($id);
+        $reply = ReplyToMessage::find($id);
+        $result ='success';
+        if($reply) {
+            $reply->delete();
+        } else {
+            $result = 'fail';
+        }
+        return $result;
     }
 }

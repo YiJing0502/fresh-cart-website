@@ -1,4 +1,4 @@
-@extends('layout.templete')
+@extends('templates.templete')
 @section('main')
                 <!-- 主欄最上面 -->
                 <div class="two-up row my-5 m-0 p-0 ">

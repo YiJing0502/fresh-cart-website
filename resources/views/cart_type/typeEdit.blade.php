@@ -1,4 +1,4 @@
-@extends('layout.templete')
+@extends('templates.templete')
 
 @section('main')
                 <!-- 主欄最上面 -->
