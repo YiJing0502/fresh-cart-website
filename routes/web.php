@@ -19,12 +19,6 @@ use App\Models\ProductTypeImg;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', function () {
-//     // $data = ProductTypeImg::first();
-//     // dd($data->productType);
-//     return view('welcome');
-// });
 Route::get('/', [FontController::class, 'index'])->name('front-index');
 
 Route::prefix('/cart')->group(function () {
@@ -37,16 +31,13 @@ Route::prefix('/cart')->group(function () {
     // 刪除
     Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cartDestroy');
 });
-// Route::get('test', [CartController::class, 'index']);
+
 Route::prefix('/type')->group(function () {
     Route::get('/product-list', [TypeController::class, 'index'])->name('typeProductList');
-
     Route::get('/add', [TypeController::class, 'create'])->name('typeAdd');
     Route::post('/store', [TypeController::class, 'store'])->name('typeStore');
-
      Route::get('/edit/{id}', [TypeController::class, 'edit'])->name('typeEdit');
     Route::put('/update/{id}', [TypeController::class, 'update'])->name('typeUpdate');
-    // 刪除
     Route::delete('/destroy/{id}', [TypeController::class, 'destroy'])->name('typeDestroy');
 });
 
@@ -75,6 +66,4 @@ Route::prefix('/reply')->group(function () {
 
     Route::get('/edit/{id}', [ReplyController::class, 'edit'])->name('replyEdit');
     Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
-    // 刪除
-    // Route::delete('/reply/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');
 });
